@@ -1,4 +1,4 @@
-package com.vzelenin.microservices.galleryservice;
+package com.vzelenin.microservices;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

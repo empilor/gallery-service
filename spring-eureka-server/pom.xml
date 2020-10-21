@@ -11,7 +11,7 @@
 	<groupId>com.vzelenin.microservices</groupId>
 	<artifactId>spring-eureka-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Gallery service application</name>
+	<name>Eureka server for Gallery service application</name>
 	<description>Spring Boot microservice project for Gallery Service</description>
 
 	<properties>
