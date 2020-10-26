@@ -2,6 +2,8 @@ package com.vzelenin.microservices.eureka.gallery.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.vzelenin.microservices.eureka.gallery.entities.Gallery;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +16,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/")
 public class GalleryHomeController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(GalleryHomeController.class);
+
     @Autowired
     private RestTemplate restTemplate;
 
@@ -31,10 +35,14 @@ public class GalleryHomeController {
     @HystrixCommand(fallbackMethod = "fallback")
     @RequestMapping("/{id}")
     public Gallery getGallery(@PathVariable final int id) {
+        LOGGER.info("GalleryHomeController.getGallery() has been called, id = {}", id);
         Gallery gallery = new Gallery(id);
+        LOGGER.info("new Gallery has been created");
         List<Object> images = restTemplate.getForObject("http://image-service/images/", List.class);
         gallery.setImages(images);
+        LOGGER.info("Images has been set to the new Gallery");
 
+        LOGGER.info("Returning images...");
         return gallery;
     }
 
