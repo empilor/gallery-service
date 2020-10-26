@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/")
-public class HomeController {
+public class ImageHomeController {
     @Autowired
     Environment env;
 

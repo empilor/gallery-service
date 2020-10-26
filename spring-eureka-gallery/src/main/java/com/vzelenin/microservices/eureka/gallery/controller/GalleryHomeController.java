@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/")
-public class HomeController {
+public class GalleryHomeController {
     @Autowired
     private RestTemplate restTemplate;
 
@@ -20,6 +20,9 @@ public class HomeController {
     private Environment env;
 
     @RequestMapping("/")
+    // This is useful for debugging
+    // When having multiple instance of gallery service running at different ports.
+    // We load balance among them, and display which instance received the request.
     public String home() {
         return "Gallery Service is running on port: " + env.getProperty("local.server.port");
     }
