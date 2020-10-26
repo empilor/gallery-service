@@ -1,5 +1,6 @@
 package com.vzelenin.microservices.eureka.gallery.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.vzelenin.microservices.eureka.gallery.entities.Gallery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -27,6 +28,7 @@ public class GalleryHomeController {
         return "Gallery Service is running on port: " + env.getProperty("local.server.port");
     }
 
+    @HystrixCommand(fallbackMethod = "fallback")
     @RequestMapping("/{id}")
     public Gallery getGallery(@PathVariable final int id) {
         Gallery gallery = new Gallery(id);
@@ -34,6 +36,11 @@ public class GalleryHomeController {
         gallery.setImages(images);
 
         return gallery;
+    }
+
+    // a fallback method to be called if failure happened
+    public Gallery fallback(int galleryId, Throwable hystrixCommand) {
+        return new Gallery(galleryId);
     }
 
     // -------- Admin Area --------
