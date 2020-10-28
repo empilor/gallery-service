@@ -33,7 +33,7 @@ public class ImageHomeController {
     }
 
     private void throwException() throws Exception {
-        LOGGER.info("An exception will be throwned. It is within test method to test Hystrix");
+        LOGGER.info("An exception will be thrown (in order to test Hystrix)");
         throw new Exception("Images can't be fetched");
     }
 }

@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.vzelenin.microservices</groupId>
-	<artifactId>spring-eureka-zuul</artifactId>
+	<artifactId>spring-eureka-auth</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-eureka-zuul</name>
+	<name>spring-eureka-auth</name>
 	<description>Spring Boot microservice project for Gallery Service</description>
 
 	<properties>
@@ -22,19 +22,15 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-zuul</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
@@ -60,6 +56,23 @@
 			</exclusions>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.vzelenin.microservices</groupId>
+			<artifactId>spring-eureka-zuul</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.vzelenin.microservices</groupId>
+			<artifactId>spring-eureka-zuul</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
 			<groupId>com.vzelenin.microservices</groupId>
 			<artifactId>spring-eureka-common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
@@ -70,6 +83,7 @@
 			<version>2.3.0</version>
 		</dependency>
 	</dependencies>
+
 
 	<dependencyManagement>
 		<dependencies>

@@ -46,7 +46,7 @@ public class GalleryHomeController {
         return gallery;
     }
 
-    // a fallback method to be called if failure happened
+    // a fallback method to be called if failure happened (for Hystrix)
     public Gallery fallback(int galleryId, Throwable hystrixCommand) {
         return new Gallery(galleryId);
     }
