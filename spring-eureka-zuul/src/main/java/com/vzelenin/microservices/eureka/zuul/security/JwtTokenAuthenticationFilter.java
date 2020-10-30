@@ -41,7 +41,8 @@ public class JwtTokenAuthenticationFilter extends  OncePerRequestFilter {
         // It's Ok. Maybe the user accessing a public path or asking for a token.
 
         // All secured paths that needs a token are already defined and secured in config class.
-        // And If user tried to access without access token, then he won't be authenticated and an exception will be thrown.
+        // And If user tried to access without access token,
+        // then he won't be authenticated and an exception will be thrown.
 
         // 3. Get the token
         String token = header.replace(jwtConfig.getPrefix(), "");
@@ -60,8 +61,10 @@ public class JwtTokenAuthenticationFilter extends  OncePerRequestFilter {
                 List<String> authorities = (List<String>) claims.get("authorities");
 
                 // 5. Create auth object
-                // UsernamePasswordAuthenticationToken: A built-in object, used by spring to represent the current authenticated / being authenticated user.
-                // It needs a list of authorities, which has type of GrantedAuthority interface, where SimpleGrantedAuthority is an implementation of that interface
+                // UsernamePasswordAuthenticationToken: A built-in object, used by spring to represent
+                // the current authenticated / being authenticated user.
+                // It needs a list of authorities, which has type of GrantedAuthority interface,
+                // where SimpleGrantedAuthority is an implementation of that interface
                 UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
                         username, null, authorities.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList()));
 
